@@ -1,0 +1,13 @@
+library(robotstxt)
+library(rvest)
+url <- "https://www.flipkart.com/search?q=one%20plus&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off"
+path <- paths_allowed(url)
+web <- read_html(url)
+Name <- web%>%html_nodes("._4rR01T")%>%html_text()
+View(Name)
+Deal_Price <- web%>%html_nodes("._1_WHN1")%>%html_text()
+View(Deal_Price)
+Ratings <- web%>%html_nodes(".gUuXy-")%>%html_text()
+View(Ratings)
+mobile.ratings <- data.frame(Name, Deal_Price, Ratings)
+View(mobile.ratings)
